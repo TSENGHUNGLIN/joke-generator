@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>?冽?蝚店?Ｙ???/title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>?? ?冽?蝚店?Ｙ???/h1>
+        
+        <div class="joke-display">
+            <p id="joke-text">??銝??????冽?蝚店嚗?/p>
+        </div>
+        
+        <div class="button-group">
+            <button id="get-joke-btn" class="btn">??蝚店</button>
+            <button id="copy-btn" class="btn btn-secondary">銴ˊ蝚店</button>
+            <button id="read-btn" class="btn btn-secondary">??蝚店</button>
+        </div>
+        
+        <div class="loading" id="loading" style="display: none;">
+            <p>??頛銝?..</p>
+        </div>
+        
+        <div id="error" class="error" style="display: none;"></div>
+        
+        <div class="joke-counter">
+            <p>撌脩???閰梧?<span id="counter">0</span></p>
+        </div>
+    </div>
+
+    <script src="script.js?v=2"></script>
+</body>
+</html>

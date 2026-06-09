@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>隨機笑話產生器</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>😂 隨機笑話產生器</h1>
+        
+        <div class="joke-display">
+            <p id="joke-text">按一下按鈕，取得隨機笑話！</p>
+        </div>
+        
+        <div class="button-group">
+            <button id="get-joke-btn" class="btn">取得笑話</button>
+            <button id="copy-btn" class="btn btn-secondary">複製笑話</button>
+            <button id="read-btn" class="btn btn-secondary">朗讀笑話</button>
+        </div>
+        
+        <div class="loading" id="loading" style="display: none;">
+            <p>⏳ 載入中...</p>
+        </div>
+        
+        <div id="error" class="error" style="display: none;"></div>
+        
+        <div class="joke-counter">
+            <p>已生成笑話：<span id="counter">0</span></p>
+        </div>
+    </div>
+
+    <script src="script.js?v=2"></script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+﻿const jokeText = document.getElementById('joke-text');
+const getJokeBtn = document.getElementById('get-joke-btn');
+const copyBtn = document.getElementById('copy-btn');
+const readBtn = document.getElementById('read-btn');
+const loading = document.getElementById('loading');
+const errorBox = document.getElementById('error');
+const counter = document.getElementById('counter');
+let jokesCount = 0;
+
+const chineseJokes = [
+    '?憭拙鞎琿?嚗??∪???銝?銝??????隤迎?銝嚗?撌脩?韏圈?靘???,
+    '?葦???隞暻潸岫閬葆閮?璈??飛??嚗??箄鋡歇蝬遛鈭?,
+    '?拐?韏瑕???∪?鋆∠?鈭綽?閬箏?隞予?孵撣伐?撠望?隞????,
+    '??憭抵?摮??梧????獐蝮賣?獐蝢????嚗??箸??蝎?,
+    '擳?擳牧嚗?銝?皜賊暻澆翰嚗??孵敺餈賭???,
+    '?貊??雿??獐擃?隞暻潘?摮拙?蝑???閬粹憭抒???,
+    '雿?厭頝????暻澆?嚗??◤?嗆??拙?,
+    '????虜瘜喉??箔?暻潘??隞?詨???,
+    '撠??直慦踝????瑕之?臭誑?嗡?暻潘??直慦賜?嚗??臭誑?嗡??芸楛??,
+    '?箔?暻潮?血??嚗??箏????蝞晞?
+];
+
+function readJoke() {
+    const text = jokeText.textContent;
+    if (!text || text === '??銝??????冽?蝚店嚗?) {
+        errorBox.textContent = '?桀?瘝?閬?霈??閰晞?;
+        errorBox.style.display = 'block';
+        return;
+    }
+
+    if (!window.speechSynthesis) {
+        errorBox.textContent = '甇斤汗?其??舀隤????;
+        errorBox.style.display = 'block';
+        return;
+    }
+
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = 'zh-Hant';
+    speechSynthesis.cancel();
+    speechSynthesis.speak(utterance);
+}
+
+function fetchJoke() {
+    loading.style.display = 'block';
+    errorBox.style.display = 'none';
+
+    const joke = chineseJokes[Math.floor(Math.random() * chineseJokes.length)];
+    jokeText.textContent = joke;
+    jokesCount += 1;
+    counter.textContent = jokesCount;
+    loading.style.display = 'none';
+    readJoke();
+}
+
+getJokeBtn.addEventListener('click', fetchJoke);
+readBtn.addEventListener('click', readJoke);
+copyBtn.addEventListener('click', async () => {
+    try {
+        await navigator.clipboard.writeText(jokeText.textContent);
+        copyBtn.textContent = '撌脰?鋆踝?';
+        setTimeout(() => (copyBtn.textContent = '銴ˊ蝚店'), 1500);
+    } catch (err) {
+        errorBox.textContent = '?⊥?銴ˊ蝚店??;
+        errorBox.style.display = 'block';
+    }
+});
